@@ -1,2 +1,2 @@
 httpx==0.23.3
-streamlit==1.21.0
+streamlit==1.22.0
