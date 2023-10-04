@@ -66,7 +66,7 @@ def render(contents: list[Content]) -> None:
 
         with cols[i % 3]:
             st.image(image=c.image, width=WIDTH)
-            st.markdown(f'Model: [{c.model}]({c.model_url})')
+            st.link_button(f'Model: {c.model}', c.model_url)
 
 
 if __name__ == '__main__':
