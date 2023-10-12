@@ -5,7 +5,9 @@ import random
 import httpx
 import streamlit as st
 
-URL_BASE = random.choice(
+import sites
+
+URL_BASE: str = random.choice(
     [
         'https://www.alsscan.com',
         'https://www.domai.com',
@@ -67,6 +69,11 @@ def render(contents: list[Content]) -> None:
         with cols[i % 3]:
             st.image(image=c.image, width=WIDTH)
             st.link_button(f'Model: {c.model}', c.model_url)
+
+            # hbox for site links
+            buttons = st.columns(len(sites.SITES))
+            for i, b in enumerate(buttons):
+                b.link_button(sites.SITES[i][0], sites.SITES[i][1](c.model))
 
 
 if __name__ == '__main__':
