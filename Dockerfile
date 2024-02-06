@@ -11,6 +11,7 @@ USER xatier
 
 COPY ./requirements.txt /app/requirements.txt
 COPY ./server.py /app/server.py
+COPY ./sites.py /app/sites.py
 COPY ./credentials.toml /home/xatier/.streamlit/credentials.toml
 COPY ./config.toml /home/xatier/.streamlit/config.toml
 
