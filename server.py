@@ -42,8 +42,10 @@ class Content:
 def fetch() -> list[Content]:
     try:
         j = httpx.get(API_URL, follow_redirects=True).json()
-    except json.decoder.JSONDecodeError:
-        print(f'JSONDecodeError on fetching {URL_BASE}')
+    except json.decoder.JSONDecodeError as e:
+        print(f'JSONDecodeError on fetching {URL_BASE}: {e}')
+    except httpx.ConnectError as e:
+        print(f'ConnectError on fetching {URL_BASE}: {e}')
 
     contents: list[Content] = []
     for g in j.get('galleries'):
