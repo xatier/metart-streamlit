@@ -2,7 +2,7 @@ from dataclasses import dataclass
 import json
 import random
 
-import httpx
+import httpx2
 import streamlit as st
 
 import sites
@@ -41,10 +41,10 @@ class Content:
 
 def fetch() -> list[Content]:
     try:
-        j = httpx.get(API_URL, follow_redirects=True).json()
+        j = httpx2.get(API_URL, follow_redirects=True).json()
     except json.decoder.JSONDecodeError as e:
         print(f'JSONDecodeError on fetching {URL_BASE}: {e}')
-    except httpx.ConnectError as e:
+    except httpx2.ConnectError as e:
         print(f'ConnectError on fetching {URL_BASE}: {e}')
 
     contents: list[Content] = []

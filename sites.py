@@ -1,6 +1,6 @@
 import urllib.parse
 
-import httpx
+import httpx2
 
 q = urllib.parse.quote
 qp = urllib.parse.quote_plus
@@ -21,9 +21,9 @@ def pornpics(name: str) -> str:
     )
 
     try:
-        r: httpx.Response = httpx.get(query_url)
+        r: httpx2.Response = httpx2.get(query_url)
 
-        if r.status_code == httpx.codes.OK:
+        if r.status_code == httpx2.codes.OK:
             j = r.json()
             return base + j[0]['link']
     except Exception:
